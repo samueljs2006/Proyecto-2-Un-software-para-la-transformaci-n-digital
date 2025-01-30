@@ -38,6 +38,7 @@ La idea es construir una herramienta funcional de gestión de tareas que pueda s
 -Las tareas se cargarán desde el archivo cada vez que se inicie la aplicación para garantizar que no se pierdan, y se guardarán de nuevo cada vez que se agregue, modifique o elimine una tarea.
 
 #Flujo de trabajo del programa:
+
 1.Inicio: Cuando el usuario ejecute el programa, verá un menú con las siguientes opciones:
 
 -Ver tareas
