@@ -4,6 +4,7 @@ La idea que propuse inicialmente es crear una aplicación de gestión de tareas 
 
 
 #Objetivo del software:
+
 La idea es construir una herramienta funcional de gestión de tareas que pueda ser utilizada en cualquier entorno que soporte Python (como una computadora personal o un servidor), donde los usuarios puedan:
 
 -Ver todas sus tareas actuales: Esto incluye ver el estado de cada tarea (pendiente o completada).
@@ -12,6 +13,7 @@ La idea es construir una herramienta funcional de gestión de tareas que pueda s
 -Eliminar tareas: Los usuarios pueden borrar tareas que ya no necesiten o hayan completado.
 
 #Detalles de la implementación:
+
 1.Interfaz de usuario:
 
 -Se utilizará un menú de línea de comandos (CLI), lo que significa que el usuario interactuará con el software a través de texto en la terminal o consola.
@@ -58,6 +60,7 @@ La idea es construir una herramienta funcional de gestión de tareas que pueda s
 -Las tareas estarán almacenadas en un archivo tasks.json que se actualizará automáticamente cada vez que se realice una modificación.
 
 #Posibles mejoras y expansión:
+
 Este software es solo un punto de partida. Aquí algunas ideas para ampliarlo en el futuro:
 
 -Interfaz gráfica (GUI): Usar Tkinter o PyQt para crear una interfaz visual en lugar de una interfaz de línea de comandos.
