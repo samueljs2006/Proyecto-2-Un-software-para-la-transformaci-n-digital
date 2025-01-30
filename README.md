@@ -1,4 +1,5 @@
 # Proyecto-2-Un-software-para-la-transformaci-n-digital
+Se ejecuta con python task_manager.py
 
 La idea que propuse inicialmente es crear una aplicación de gestión de tareas utilizando Python. Esta aplicación sería una herramienta sencilla para que los usuarios puedan gestionar sus tareas diarias o proyectos. La aplicación tiene un menú de línea de comandos (CLI) y permite a los usuarios interactuar con él para agregar, ver, completar y eliminar tareas.
 
