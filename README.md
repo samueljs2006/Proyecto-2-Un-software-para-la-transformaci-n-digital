@@ -65,6 +65,9 @@ La idea es construir una herramienta funcional de gestión de tareas que pueda s
 Este software es solo un punto de partida. Aquí algunas ideas para ampliarlo en el futuro:
 
 -Interfaz gráfica (GUI): Usar Tkinter o PyQt para crear una interfaz visual en lugar de una interfaz de línea de comandos.
+
 -Soporte para fechas: Permitir a los usuarios agregar fechas límite a las tareas.
+
 -Prioridades: Poder asignar diferentes niveles de prioridad (alta, media, baja) a las tareas.
+
 -Recordatorios y notificaciones: Enviar recordatorios al usuario cuando una tarea esté próxima a vencer.
