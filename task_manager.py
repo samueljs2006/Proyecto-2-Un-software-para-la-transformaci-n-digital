@@ -1,87 +1,93 @@
 import json
 import os
+import tkinter as tk
+from tkinter import messagebox
 
-# Archivo donde se almacenarán las tareas
 TASKS_FILE = "tasks.json"
 
-# Función para cargar las tareas desde el archivo JSON
 def load_tasks():
     if os.path.exists(TASKS_FILE):
         with open(TASKS_FILE, "r") as file:
-            return json.load(file)
+            try:
+                return json.load(file)
+            except json.JSONDecodeError:
+                return []
     return []
 
-# Función para guardar las tareas en el archivo JSON
 def save_tasks(tasks):
     with open(TASKS_FILE, "w") as file:
         json.dump(tasks, file, indent=4)
 
-# Función para agregar una tarea
-def add_task(task_description):
+def get_next_id(tasks):
+    return max((task["id"] for task in tasks), default=0) + 1
+
+def add_task():
+    task_description = task_entry.get().strip()
+    if not task_description:
+        messagebox.showerror("Error", "La descripción no puede estar vacía.")
+        return
     tasks = load_tasks()
-    task_id = len(tasks) + 1
-    new_task = {"id": task_id, "task": task_description, "completed": False}
+    new_task = {"id": get_next_id(tasks), "task": task_description, "completed": False}
     tasks.append(new_task)
     save_tasks(tasks)
-    print(f"Tarea '{task_description}' agregada exitosamente.")
+    task_entry.delete(0, tk.END)
+    update_task_list()
 
-# Función para marcar una tarea como completada
-def complete_task(task_id):
+def complete_task():
+    try:
+        selected_item = task_listbox.curselection()[0]
+        tasks = load_tasks()
+        tasks[selected_item]["completed"] = True
+        save_tasks(tasks)
+        update_task_list()
+    except IndexError:
+        messagebox.showerror("Error", "Selecciona una tarea para completar.")
+
+def delete_task():
+    try:
+        selected_item = task_listbox.curselection()[0]
+        tasks = load_tasks()
+        del tasks[selected_item]
+        save_tasks(tasks)
+        update_task_list()
+    except IndexError:
+        messagebox.showerror("Error", "Selecciona una tarea para eliminar.")
+
+def update_task_list():
+    task_listbox.delete(0, tk.END)
     tasks = load_tasks()
     for task in tasks:
-        if task["id"] == task_id:
-            task["completed"] = True
-            save_tasks(tasks)
-            print(f"Tarea {task_id} marcada como completada.")
-            return
-    print(f"Tarea con ID {task_id} no encontrada.")
+        status = "✅" if task["completed"] else "⏳"
+        color = "#90EE90" if task["completed"] else "#FFFFE0"  # Verde claro si está completada, amarillo si no
+        task_listbox.insert(tk.END, f"{task['task']} {status}")
+        task_listbox.itemconfig(tk.END, {'bg': color})
 
-# Función para eliminar una tarea
-def delete_task(task_id):
-    tasks = load_tasks()
-    tasks = [task for task in tasks if task["id"] != task_id]
-    save_tasks(tasks)
-    print(f"Tarea con ID {task_id} eliminada.")
-
-# Función para mostrar todas las tareas
-def show_tasks():
-    tasks = load_tasks()
-    if not tasks:
-        print("No hay tareas en la lista.")
-    else:
-        for task in tasks:
-            status = "Completada" if task["completed"] else "Pendiente"
-            print(f"ID: {task['id']} - {task['task']} ({status})")
-
-# Función principal para mostrar el menú y recibir la acción del usuario
 def main():
-    while True:
-        print("\n--- Gestión de Tareas ---")
-        print("1. Ver tareas")
-        print("2. Agregar tarea")
-        print("3. Marcar tarea como completada")
-        print("4. Eliminar tarea")
-        print("5. Salir")
-        
-        choice = input("Selecciona una opción: ")
+    global root, task_entry, task_listbox
+    
+    root = tk.Tk()
+    root.title("Gestor de Tareas")
 
-        if choice == "1":
-            show_tasks()
-        elif choice == "2":
-            task_description = input("Introduce la descripción de la tarea: ")
-            add_task(task_description)
-        elif choice == "3":
-            task_id = int(input("Introduce el ID de la tarea a marcar como completada: "))
-            complete_task(task_id)
-        elif choice == "4":
-            task_id = int(input("Introduce el ID de la tarea a eliminar: "))
-            delete_task(task_id)
-        elif choice == "5":
-            print("Saliendo...")
-            break
-        else:
-            print("Opción no válida, por favor elige una opción válida.")
+    frame = tk.Frame(root)
+    frame.pack(pady=10)
 
-# Ejecutar la aplicación
+    task_entry = tk.Entry(frame, width=40)
+    task_entry.pack(side=tk.LEFT, padx=10)
+
+    add_button = tk.Button(frame, text="Agregar", command=add_task, bg="#4CAF50", fg="white")
+    add_button.pack(side=tk.LEFT)
+
+    task_listbox = tk.Listbox(root, width=50, height=10, selectmode=tk.SINGLE)
+    task_listbox.pack(pady=10)
+
+    complete_button = tk.Button(root, text="Completar", command=complete_task, bg="#008CBA", fg="white")
+    complete_button.pack(side=tk.LEFT, padx=10)
+
+    delete_button = tk.Button(root, text="Eliminar", command=delete_task, bg="#f44336", fg="white")
+    delete_button.pack(side=tk.RIGHT, padx=10)
+
+    update_task_list()
+    root.mainloop()
+
 if __name__ == "__main__":
     main()
