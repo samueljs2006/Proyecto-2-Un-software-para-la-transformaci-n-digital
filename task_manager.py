@@ -67,27 +67,41 @@ def activate_ai():
     """Activar IA para autoetiquetar tareas"""
     tasks = load_tasks()
     for task in tasks:
-        # Aquí utilizaríamos un modelo de IA como Ollama o similar para autoetiquetar la tarea
-        task["tags"] = get_task_tags_from_ai(task["task"])  # Simulando etiquetas generadas por IA
+        task["tags"] = get_task_tags_from_ai(task["task"])  # Integrando con Ollama
     save_tasks(tasks)
     update_task_list()
 
 def get_task_tags_from_ai(task_description):
-    """Simula una llamada a la IA para obtener etiquetas para una tarea"""
-    # Aquí llamamos a Ollama o al modelo que estés utilizando. Esto puede ser algo como:
-    # subprocess.run(["ollama", "run", "model_name", "--input", task_description])
-    # Por ahora, simulemos que la IA genera etiquetas:
-    if "urgente" in task_description.lower():
-        return ["Urgente", "Alta Prioridad"]
-    elif "reunión" in task_description.lower():
-        return ["Reunión", "Trabajo"]
-    return ["General"]
+    """Simula una llamada a Ollama para obtener etiquetas para una tarea"""
+    try:
+        # Llamamos a Ollama para obtener etiquetas
+        result = subprocess.run(
+            ["ollama", "run", "model_name", "--input", task_description],
+            capture_output=True, text=True
+        )
+
+        # Imagina que Ollama responde con etiquetas en formato JSON o algo legible
+        output = result.stdout.strip()  # Suponiendo que Ollama da la respuesta en formato texto o JSON.
+        
+        if result.returncode == 0:
+            # Ejemplo simple, se podría hacer parsing de la respuesta para obtener las etiquetas
+            # Aquí se simula que Ollama devuelve algo relacionado con "urgente" o "reunión".
+            if "urgente" in output.lower():
+                return ["Urgente", "Alta Prioridad"]
+            elif "reunión" in output.lower():
+                return ["Reunión", "Trabajo"]
+            else:
+                return ["General"]
+        else:
+            return ["Sin Etiquetas"]
+
+    except Exception as e:
+        print(f"Error al ejecutar Ollama: {e}")
+        return ["Error"]
 
 def recommend_task_based_on_mood():
     """Recomienda tareas basadas en el estado de ánimo y prioridades"""
     tasks = load_tasks()
-    # Imagina que recibimos un estado de ánimo o preferencia de tarea, podríamos ordenar tareas
-    # por etiquetas o prioridad aquí. Este es un ejemplo básico:
     tasks_sorted = sorted(tasks, key=lambda x: "Urgente" in x.get("tags", []), reverse=True)
     recommended_task = tasks_sorted[0] if tasks_sorted else None
     if recommended_task:

@@ -4,7 +4,7 @@
         "task": "rgrg",
         "completed": false,
         "tags": [
-            "General"
+            "Sin Etiquetas"
         ]
     },
     {
@@ -12,13 +12,15 @@
         "task": "grg",
         "completed": false,
         "tags": [
-            "General"
+            "Sin Etiquetas"
         ]
     },
     {
         "id": 4,
         "task": "f",
         "completed": false,
-        "tags": []
+        "tags": [
+            "Sin Etiquetas"
+        ]
     }
 ]
