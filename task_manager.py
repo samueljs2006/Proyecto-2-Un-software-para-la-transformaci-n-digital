@@ -2,6 +2,7 @@ import json
 import os
 import tkinter as tk
 from tkinter import messagebox
+import subprocess
 
 TASKS_FILE = "tasks.json"
 
@@ -27,7 +28,7 @@ def add_task():
         messagebox.showerror("Error", "La descripción no puede estar vacía.")
         return
     tasks = load_tasks()
-    new_task = {"id": get_next_id(tasks), "task": task_description, "completed": False}
+    new_task = {"id": get_next_id(tasks), "task": task_description, "completed": False, "tags": []}
     tasks.append(new_task)
     save_tasks(tasks)
     task_entry.delete(0, tk.END)
@@ -62,6 +63,38 @@ def update_task_list():
         task_listbox.insert(tk.END, f"{task['task']} {status}")
         task_listbox.itemconfig(tk.END, {'bg': color})
 
+def activate_ai():
+    """Activar IA para autoetiquetar tareas"""
+    tasks = load_tasks()
+    for task in tasks:
+        # Aquí utilizaríamos un modelo de IA como Ollama o similar para autoetiquetar la tarea
+        task["tags"] = get_task_tags_from_ai(task["task"])  # Simulando etiquetas generadas por IA
+    save_tasks(tasks)
+    update_task_list()
+
+def get_task_tags_from_ai(task_description):
+    """Simula una llamada a la IA para obtener etiquetas para una tarea"""
+    # Aquí llamamos a Ollama o al modelo que estés utilizando. Esto puede ser algo como:
+    # subprocess.run(["ollama", "run", "model_name", "--input", task_description])
+    # Por ahora, simulemos que la IA genera etiquetas:
+    if "urgente" in task_description.lower():
+        return ["Urgente", "Alta Prioridad"]
+    elif "reunión" in task_description.lower():
+        return ["Reunión", "Trabajo"]
+    return ["General"]
+
+def recommend_task_based_on_mood():
+    """Recomienda tareas basadas en el estado de ánimo y prioridades"""
+    tasks = load_tasks()
+    # Imagina que recibimos un estado de ánimo o preferencia de tarea, podríamos ordenar tareas
+    # por etiquetas o prioridad aquí. Este es un ejemplo básico:
+    tasks_sorted = sorted(tasks, key=lambda x: "Urgente" in x.get("tags", []), reverse=True)
+    recommended_task = tasks_sorted[0] if tasks_sorted else None
+    if recommended_task:
+        messagebox.showinfo("Recomendación", f"Te recomendamos empezar con: {recommended_task['task']}")
+    else:
+        messagebox.showinfo("Recomendación", "No hay tareas urgentes para recomendar.")
+
 def main():
     global root, task_entry, task_listbox
     
@@ -85,6 +118,12 @@ def main():
 
     delete_button = tk.Button(root, text="Eliminar", command=delete_task, bg="#f44336", fg="white")
     delete_button.pack(side=tk.RIGHT, padx=10)
+
+    ai_button = tk.Button(root, text="Activar IA", command=activate_ai, bg="#FF9800", fg="white")
+    ai_button.pack(pady=5)
+
+    recommend_button = tk.Button(root, text="Recomendar Tarea", command=recommend_task_based_on_mood, bg="#9C27B0", fg="white")
+    recommend_button.pack(pady=5)
 
     update_task_list()
     root.mainloop()

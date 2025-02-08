@@ -1,22 +1,26 @@
 [
     {
         "id": 1,
-        "task": "Comprar leche",
-        "completed": false
+        "task": "JIJIJ",
+        "completed": false,
+        "tags": [
+            "General"
+        ]
     },
     {
         "id": 2,
-        "task": "Estudiar Python",
-        "completed": false
+        "task": "rgrg",
+        "completed": false,
+        "tags": [
+            "General"
+        ]
     },
     {
         "id": 3,
-        "task": "julio mates",
-        "completed": false
-    },
-    {
-        "id": 4,
-        "task": "EXAMEN PROG",
-        "completed": true
+        "task": "grg",
+        "completed": false,
+        "tags": [
+            "General"
+        ]
     }
 ]
