@@ -1,13 +1,5 @@
 [
     {
-        "id": 1,
-        "task": "JIJIJ",
-        "completed": false,
-        "tags": [
-            "General"
-        ]
-    },
-    {
         "id": 2,
         "task": "rgrg",
         "completed": false,
@@ -22,5 +14,11 @@
         "tags": [
             "General"
         ]
+    },
+    {
+        "id": 4,
+        "task": "f",
+        "completed": false,
+        "tags": []
     }
 ]
