@@ -18,7 +18,7 @@
     {
         "id": 4,
         "task": "f",
-        "completed": false,
+        "completed": true,
         "tags": [
             "Sin Etiquetas"
         ]
