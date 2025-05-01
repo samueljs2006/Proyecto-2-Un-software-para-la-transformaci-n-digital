@@ -63,29 +63,35 @@ def update_task_list():
         task_listbox.insert(tk.END, f"{task['task']} {status}")
         task_listbox.itemconfig(tk.END, {'bg': color})
 
+def is_ollama_available():
+    """Verifica si Ollama está disponible en el sistema."""
+    try:
+        result = subprocess.run(["ollama", "--version"], capture_output=True, text=True)
+        return result.returncode == 0
+    except FileNotFoundError:
+        return False
+
 def activate_ai():
-    """Activar IA para autoetiquetar tareas"""
+    """Activar IA para autoetiquetar tareas."""
+    if not is_ollama_available():
+        messagebox.showerror("Error", "Ollama no está disponible en el sistema.")
+        return
+
     tasks = load_tasks()
     for task in tasks:
-        task["tags"] = get_task_tags_from_ai(task["task"])  # Integrando con Ollama
+        task["tags"] = get_task_tags_from_ai(task["task"])
     save_tasks(tasks)
     update_task_list()
 
 def get_task_tags_from_ai(task_description):
-    """Simula una llamada a Ollama para obtener etiquetas para una tarea"""
+    """Obtiene etiquetas para una tarea utilizando Ollama."""
     try:
-        # Llamamos a Ollama para obtener etiquetas
         result = subprocess.run(
             ["ollama", "run", "model_name", "--input", task_description],
             capture_output=True, text=True
         )
-
-        # Imagina que Ollama responde con etiquetas en formato JSON o algo legible
-        output = result.stdout.strip()  # Suponiendo que Ollama da la respuesta en formato texto o JSON.
-        
         if result.returncode == 0:
-            # Ejemplo simple, se podría hacer parsing de la respuesta para obtener las etiquetas
-            # Aquí se simula que Ollama devuelve algo relacionado con "urgente" o "reunión".
+            output = result.stdout.strip()
             if "urgente" in output.lower():
                 return ["Urgente", "Alta Prioridad"]
             elif "reunión" in output.lower():
@@ -94,13 +100,15 @@ def get_task_tags_from_ai(task_description):
                 return ["General"]
         else:
             return ["Sin Etiquetas"]
-
+    except FileNotFoundError:
+        print("Ollama no está instalado o no es accesible.")
+        return ["Error"]
     except Exception as e:
         print(f"Error al ejecutar Ollama: {e}")
         return ["Error"]
 
 def recommend_task_based_on_mood():
-    """Recomienda tareas basadas en el estado de ánimo y prioridades"""
+    """Recomienda tareas basadas en el estado de ánimo y prioridades."""
     tasks = load_tasks()
     tasks_sorted = sorted(tasks, key=lambda x: "Urgente" in x.get("tags", []), reverse=True)
     recommended_task = tasks_sorted[0] if tasks_sorted else None
