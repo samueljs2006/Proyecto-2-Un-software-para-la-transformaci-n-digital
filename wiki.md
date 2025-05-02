@@ -81,7 +81,7 @@ cd gestor_tareas
 # Crear nueva rama:
 git checkout -b mejora/descripcion_corta
 ```
-📌 Guía completa: CONTRIBUTING.md
+📌 **Guía completa**: [CONTRIBUTING.md](/CONTRIBUTING.md)
 
 
 
