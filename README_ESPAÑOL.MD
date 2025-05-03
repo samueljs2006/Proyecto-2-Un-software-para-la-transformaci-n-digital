@@ -90,7 +90,3 @@ docker run -it --rm task-manager
 2. Crea una rama (`git checkout -b feature/nueva-funcion`).  
 3. Envía un PR con tus cambios.   
 ```
-##  📜 Licencia
-
-MIT © [SAMUEL]  
-

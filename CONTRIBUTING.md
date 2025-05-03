@@ -1,67 +1,68 @@
-# Contribuciones al Gestor de Tareas  
+# Contributing to the Task Manager
 
-¡Gracias por tu interés en contribuir al proyecto! Aquí encontrarás las pautas para colaborar y las posibles mejoras que puedes implementar.  
+Thank you for your interest in contributing to the project! Here you will find guidelines for collaboration and potential improvements you can implement.
 
 ---
 
-## 🛠 Cómo Contribuir  
+## 🛠  How to Contribute
 
-### 🐞 Reportar Problemas  
-- Abre un **issue** en el repositorio describiendo el error o la mejora.  
-- Si es un bug, incluye:  
-  - Pasos para reproducirlo.  
-  - Comportamiento esperado vs. comportamiento actual.  
-  - Capturas de pantalla o logs (si aplica).  
+### 🐞 Reporting Issues
+- Open an **issue** in the repository describing the bug or improvement. 
+- If it's a bug, include: 
+  - Steps to reproduce it. 
+  - Expected behavior vs. current behavior. 
+  - Screenshots or logs (if applicable).
 
-### 💻 Enviar Pull Requests (PR)  
-1. Haz un **fork** del repositorio.  
-2. Crea una rama con un nombre descriptivo:  
+### 💻 Submitting Pull Requests (PR)  
+1. **Fork** the repository. 
+2. Create a branch with a descriptive name: 
    ```bash  
    git checkout -b feature/nueva-funcionalidad  
    ```
-3. Realiza tus cambios siguiendo el estilo de código existente.
-4. Envía un PR con:
-    - Descripción clara de los cambios.
-    - Referencia a issues relacionados (ej: Closes #123).
+3. Make your changes following the existing code style.
+4. Submit a PR with:
+    - A clear description of the changes.
+    - Reference to related issues (e.g., Closes #123).
 
-## 🚀 Ampliaciones Propuestas
-### 🔍 Búsqueda y Filtrado
-- Filtros por:
-    - Etiquetas (ej: Urgente, Trabajo).
-    - Estado (Completada/Pendiente).
-- Búsqueda por palabras clave.
+## 🚀 🚀 Proposed Enhancements
+### 🔍  Search and Filtering
+- Filters for:
+    - Tags (e.g., Urgent, Work).
+    - Status (Completed/Pending).
+- Keyword search.
 
-### ⏰ Recordatorios
-- Notificaciones para tareas próximas.
-- Integración con calendarios (Google Calendar, Outlook).
+### ⏰ Reminders
+- Notifications for upcoming tasks.
+- Calendar integration (Google Calendar, Outlook).
 
-### 🌈 Interfaz Mejorada
-- Vista Kanban: Columnas para Pendiente, En Progreso, Completado.
-- Temas personalizables: Modo oscuro/claro.
+### 🌈 Improved Interface
+- Kanban view: Columns for Pending, In Progress, Completed.
+- Customizable themes: Dark/light mode.
 
-### ☁ Sincronización en la Nube
-- Guardar tareas en Firebase o AWS.
-- Sincronización multiplataforma (Windows, macOS, móvil).
+### ☁ Cloud Sync
+- Save tasks to Firebase or AWS.
+- Cross-platform sync (Windows, macOS, mobile).
 
-### 🤖 IA Avanzada
-- Auto-clasificación de tareas con más modelos (ej: GPT-4, Llama 3).
-- Sugerencias automáticas basadas en hábitos.
+### 🤖  Advanced AI
+- Auto-classification of tasks with more models (e.g., GPT-4, Llama 3).
+- Automatic suggestions based on habits.
 
-### 📤 Exportación/Importación
-- Formatos soportados:
-    - Exportar: CSV, PDF, JSON.
-    - Importar: Desde apps como Todoist o Microsoft To-Do.
-### 👥 Colaboración
-- Compartir listas con otros usuarios.
-- Asignar tareas y comentarios en equipo.
+### 📤Export/Import
+- Supported formats:
+    - Export: CSV, PDF, JSON.
+    - Import: From apps like Todoist or Microsoft To-Do.
+### 👥 Collaboration
+- Share lists with other users.
+- Assign tasks and team comments.
 
-## 🔧 Mejoras Técnicas
-1. Refactorización:
-    - Separar la lógica de la interfaz gráfica para mejorar la mantenibilidad.
-2. Pruebas Automatizadas:
-    - Implementar un conjunto de pruebas unitarias y de integración.
-3. Documentación:
-    - Ampliar la documentación del código y del usuario final.
+## 🔧 Technical Improvements
+1. Refactoring:
+    - Separate logic from the graphical interface to improve maintainability.
+2. Automated Testing:
+    - Implement a set of unit and integration tests.
+3. Documentation:
+    - Expand code and end-user documentation.
 
-¡Esperamos tus contribuciones para hacer este gestor de tareas aún mejor!
+We look forward to your contributions to make this task manager even better!
+
 

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+        }
+        code {
+            background-color: #f5f5f5;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        pre {
+            background-color: #f8f8f8;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .function {
+            background-color: #eaf7fd;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin-bottom: 20px;
+            border-radius: 0 5px 5px 0;
+        }
+        .function-name {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .params {
+            margin-left: 20px;
+        }
+        .param-name {
+            font-weight: bold;
+        }
+        .returns {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>Task Manager with AI Integration Documentation</h1>
+    
+    <h2>Overview</h2>
+    <p>The Task Manager is a Python-based GUI application for managing tasks with automatic tagging capabilities using Ollama AI.</p>
+    
+    <h2>Main Functions</h2>
+    
+    <div class="function">
+        <div class="function-name">load_tasks()</div>
+        <p>Loads tasks from the JSON file <code>tasks.json</code>. Returns an empty list if the file doesn't exist or is invalid.</p>
+        <div class="returns">Returns: list - A list of task dictionaries.</div>
+    </div>
+    
+    <div class="function">
+        <div class="function-name">save_tasks(tasks)</div>
+        <p>Saves the list of tasks to the JSON file.</p>
+        <div class="params">
+            <p><span class="param-name">tasks</span> (list): List of task dictionaries to save.</p>
+        </div>
+    </div>
+    
+    <div class="function">
+        <div class="function-name">get_next_id(tasks)</div>
+        <p>Generates the next available task ID.</p>
+        <div class="params">
+            <p><span class="param-name">tasks</span> (list): List of existing tasks.</p>
+        </div>
+        <div class="returns">Returns: int - The next available task ID.</div>
+    </div>
+    
+    <div class="function">
+        <div class="function-name">add_task()</div>
+        <p>Adds a new task from the input field to the task list.</p>
+    </div>
+    
+    <div class="function">
+        <div class="function-name">complete_task()</div>
+        <p>Marks the selected task as completed.</p>
+    </div>
+    
+    <div class="function">
+        <div class="function-name">delete_task()</div>
+        <p>Deletes the selected task from the list.</p>
+    </div>
+    
+    <div class="function">
+        <div class="function-name">update_task_list()</div>
+        <p>Updates the task listbox with current tasks and their status.</p>
+    </div>
+    
+    <div class="function">
+        <div class="function-name">is_ollama_available()</div>
+        <p>Checks if Ollama is available on the system.</p>
+        <div class="returns">Returns: bool - True if Ollama is installed and accessible, False otherwise.</div>
+    </div>
+    
+    <div class="function">
+        <div class="function-name">activate_ai()</div>
+        <p>Activates AI to automatically tag all tasks.</p>
+    </div>
+    
+    <div class="function">
+        <div class="function-name">get_task_tags_from_ai(task_description)</div>
+        <p>Gets tags for a task using Ollama AI.</p>
+        <div class="params">
+            <p><span class="param-name">task_description</span> (str): The task description to analyze.</p>
+        </div>
+        <div class="returns">Returns: list - List of tags for the task.</div>
+    </div>
+    
+    <div class="function">
+        <div class="function-name">recommend_task_based_on_mood()</div>
+        <p>Recommends tasks based on mood and priority tags.</p>
+    </div>
+    
+    <div class="function">
+        <div class="function-name">main()</div>
+        <p>Main function that initializes and runs the application window.</p>
+    </div>
+    
+    <h2>JSON File Structure</h2>
+    <p>Tasks are stored in <code>tasks.json</code> with the following format:</p>
+    <pre>
+[
+    {
+        "id": 2,
+        "task": "rgrg",
+        "completed": false,
+        "tags": [
+            "No Tags"
+        ]
+    }
+]</pre>
+    
+    <h3>Fields:</h3>
+    <ul>
+        <li><strong>id</strong>: Unique task identifier</li>
+        <li><strong>task</strong>: Task description</li>
+        <li><strong>completed</strong>: Completion status (true/false)</li>
+        <li><strong>tags</strong>: List of tags associated with the task</li>
+    </ul>
+    
+    <h2>Usage Instructions</h2>
+    <ol>
+        <li>Run the <code>task_manager.py</code> script to start the application.</li>
+        <li>Use the input field to add new tasks.</li>
+        <li>Select a task and use the "Complete" or "Delete" buttons to manage it.</li>
+        <li>Use the "Activate AI" button to automatically tag tasks (requires Ollama installed).</li>
+        <li>Use the "Recommend Task" button to get priority-based recommendations.</li>
+    </ol>
+    
+    <h2>Requirements</h2>
+    <ul>
+        <li>Python 3.7</li>
+        <li>Modules: <code>tkinter</code>, <code>json</code>, <code>os</code>, <code>subprocess</code></li>
+        <li>Ollama (optional, for AI features)</li>
+    </ul>
+</body>
+</html>

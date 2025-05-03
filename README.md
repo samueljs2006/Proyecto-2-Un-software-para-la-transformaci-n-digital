@@ -1,73 +1,93 @@
-# Proyecto-2-Un-software-para-la-transformaci-n-digital
-Se ejecuta con python task_manager.py
+# 📝 AI-Powered Task Manager
 
-La idea que propuse inicialmente es crear una aplicación de gestión de tareas utilizando Python. Esta aplicación sería una herramienta sencilla para que los usuarios puedan gestionar sus tareas diarias o proyectos. La aplicación tiene un menú de línea de comandos (CLI) y permite a los usuarios interactuar con él para agregar, ver, completar y eliminar tareas.
+![Python](https://img.shields.io/badge/Python-3.7%2B-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+An intuitive task manager with AI features for auto-tagging and smart recommendations.
+
+---
+
+## 🚀 Motivation
 
 
-#Objetivo del software:
+**Why this project?
 
-La idea es construir una herramienta funcional de gestión de tareas que pueda ser utilizada en cualquier entorno que soporte Python (como una computadora personal o un servidor), donde los usuarios puedan:
+**  
+```markdown
+- Automates task organization using AI (Ollama) for intelligent tagging.  
+- Simplifies prioritization based on urgency and mood.  
+- Ideal for users seeking productivity with minimalist tools.  
+```
 
--Ver todas sus tareas actuales: Esto incluye ver el estado de cada tarea (pendiente o completada).
--Agregar nuevas tareas: Permite a los usuarios agregar nuevas tareas a la lista, describiendo brevemente lo que necesitan hacer.
--Marcar tareas como completadas: Los usuarios pueden actualizar el estado de las tareas para reflejar si ya están hechas.
--Eliminar tareas: Los usuarios pueden borrar tareas que ya no necesiten o hayan completado.
+##  🛠️ Requirements
 
-#Detalles de la implementación:
+- **Python 3.7+**  
+- **Tkinter** (included in Python standard library)  
+- **Ollama** (optional for AI):  
+```bash
+curl -fsSL https://ollama.ai/install.sh | sh
+```
 
-1.Interfaz de usuario:
+---
 
--Se utilizará un menú de línea de comandos (CLI), lo que significa que el usuario interactuará con el software a través de texto en la terminal o consola.
--El menú le ofrecerá varias opciones, como ver tareas, agregar nuevas tareas, marcar tareas como completadas, eliminar tareas y salir de la aplicación.
+## 📥 Installation
 
-2.Almacenamiento de datos:
 
--Las tareas se almacenarán en un archivo JSON. Este es un formato de almacenamiento común y fácil de leer/escribir en Python, lo que permitirá a la aplicación mantener un registro persistente de las tareas, incluso después de que se cierre o se reinicie el programa.
--El archivo tasks.json almacenará una lista de diccionarios, donde cada diccionario representará una tarea con su ID único, descripción y estado de completado.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/samueljs2006/Proyecto-2-Un-software-para-la-transformaci-n-digital.git
+   cd ai-task-manager  
+   ```
+2. Install dependencies:
+    ```bash
+    pip install tkinter
+    ```
 
-3.Funcionalidades principales:
+---
 
--Ver tareas: El usuario puede ver todas las tareas con su estado actual, ya sea pendiente o completada. Cada tarea tendrá un identificador único para facilitar la manipulación.
+## 🖥️ Deployment
 
--Agregar tarea: Los usuarios pueden agregar nuevas tareas ingresando una descripción. La tarea será asignada con un ID único y será marcada como "pendiente" inicialmente.
+### Windows
+```bash
+python task_manager.py
+```
+### Linux/macOS
+```bash
+chmod +x task_manager.py
+python3 task_manager.py
+```
+### Docker (Opcional)
+```markdown
+```bash
+docker build -t task-manager .
+docker run -it --rm task-manager
+```
 
--Marcar tarea como completada: El usuario puede ingresar el ID de la tarea que desea marcar como completada. La aplicación actualizará el estado de la tarea para reflejar que está terminada.
+---
 
--Eliminar tarea: El usuario puede eliminar una tarea que ya no necesite. Esto se hace ingresando el ID de la tarea que se desea borrar.
+## 🎯 Usage Examples
 
-4.Manejo de archivos:
+```markdown
+1. **Add a task**:  
+   - Type "Prepare monthly report" and click *Add*.  
 
--El programa verificará si el archivo tasks.json existe. Si no existe, lo creará automáticamente al momento de agregar la primera tarea.
--Las tareas se cargarán desde el archivo cada vez que se inicie la aplicación para garantizar que no se pierdan, y se guardarán de nuevo cada vez que se agregue, modifique o elimine una tarea.
+2. **AI auto-tagging**:  
+   - Click *Enable AI* → Tags as "Urgent" if the task contains keywords.  
 
-#Flujo de trabajo del programa:
+3. **Recommendation**:  
+   - Click *Recommend Task* → Suggests tasks tagged as "Urgent" first.  
 
-1.Inicio: Cuando el usuario ejecute el programa, verá un menú con las siguientes opciones:
+4. **Complete/Delete**:  
+   - Select a task and use the corresponding buttons.  
+```
+## 📸 Capturas
+| Main Interface	 | AI Recommendation |
+|--------------------|---------------------|
+| ![Interface](Interfaz.png) | ![Recommendartion](ia.png) |
 
--Ver tareas
--Agregar tarea
--Marcar tarea como completada
--Eliminar tarea
--Salir
-
-2.Interacción con el menú:
-
--El usuario elige una opción ingresando un número (por ejemplo, "1" para ver tareas, "2" para agregar una tarea, etc.).
--Dependiendo de la opción elegida, el programa ejecutará una de las funciones (como mostrar las tareas, agregar una tarea nueva, etc.).
--Si el usuario decide salir, el programa terminará.
-
-3.Persistencia de datos:
-
--Las tareas estarán almacenadas en un archivo tasks.json que se actualizará automáticamente cada vez que se realice una modificación.
-
-#Posibles mejoras y expansión:
-
-Este software es solo un punto de partida. Aquí algunas ideas para ampliarlo en el futuro:
-
--Interfaz gráfica (GUI): Usar Tkinter o PyQt para crear una interfaz visual en lugar de una interfaz de línea de comandos.
-
--Soporte para fechas: Permitir a los usuarios agregar fechas límite a las tareas.
-
--Prioridades: Poder asignar diferentes niveles de prioridad (alta, media, baja) a las tareas.
-
--Recordatorios y notificaciones: Enviar recordatorios al usuario cuando una tarea esté próxima a vencer.
+##  🤝 Contributions
+```markdown
+1. Fork the project.  
+2. Create a branch (`git checkout -b feature/new-feature`).  
+3. Submit a PR with your changes.  
+```
