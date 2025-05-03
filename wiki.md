@@ -119,9 +119,9 @@ The GUI was designed to be intuitive and visually appealing:
     - Activate AI (orange) for auto-tagging.
     - Recommend Task (purple) for suggestions.
 
-Here is the link to LinkedIn (www.linkedin.com/in/samuel-jiménez-8b6a33363)
+Here is the link to LinkedIn
 
-
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Contactar-%230A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/samuel-jiménez-8b6a33363) 
 
 ### 🔹 Challenges and Learnings
 1. Ollama Integration: Ensuring the system works even if Ollama isn’t installed required robust error handling.
