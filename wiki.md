@@ -4,9 +4,9 @@
 
 ### Overview
 Desktop application for task management with:
-- ✅ Create/delete tasks
-- 🤖 AI-powered auto-tagging 
-- 🔍 Smart recommendations  
+-  Create/delete tasks
+-  AI-powered auto-tagging 
+-  Smart recommendations  
 
 ### Project Structure
 ```bash
@@ -14,7 +14,7 @@ task_manager/
 ├── tasks.json          # Task database
 └── task_manager.py     # Logic + GUI
 ```
-## 📦 Dependencies
+##  Dependencies
 
 ### Essentials
 | Component | Minimum Version| Installation |
@@ -23,7 +23,7 @@ task_manager/
 | Tkinter    | -              | Included with Python |
 | ollama   | -              | optional |
 
-## 🔧  Quick Setup
+##   Quick Setup
 1. Install Python 3.7+
 ``` bash
 sudo apt-get install python3
@@ -32,7 +32,7 @@ sudo apt-get install python3
 ```bash
 ollama --version
 ```
-## 🧠 Key Features
+##  Key Features
 
 ### Basic Management
 ```python
@@ -57,14 +57,14 @@ graph TD
 2. Sorts by age
 3. Selects the most prioritized task
 
-## 🖥️ Graphical Interface
+##  Graphical Interface
 | Component | Description | Color |
 |------------|----------------|-------------|
 | Task list	| Shows status (✅/⏳) |Green/Yellow|
 | "Add" button	| Adds new task	| #4CAF50 |
 | AI button	|Activates auto-tagging	|#FF9800|
 
-## 📅 Devlog
+##  Devlog
 
 ### v1.0 - Current
 - Stable basic functionalities
@@ -74,16 +74,16 @@ graph TD
 - Cloud sync
 - Improved AI analysis
 
-## 🤝  How to Contribute
+##   How to Contribute
 ```bash 
 git clone https://github.com/your_repo/task_manager.git
 cd task_manager
 # Create a new branch:
 git checkout -b feature/short_description
 ```
-📌 **Full guide**: [CONTRIBUTING.md](/CONTRIBUTING.md)
+ **Full guide**: [CONTRIBUTING.md](/CONTRIBUTING.md)
 
-## 🚀 DevLog: Building a Task Manager with Integrated AI
+##  DevLog: Building a Task Manager with Integrated AI
 
 Today, I’m excited to share the development journey of my AI-Powered Task Manager, a tool designed to boost productivity by organizing tasks and leveraging AI for automatic tagging.
 

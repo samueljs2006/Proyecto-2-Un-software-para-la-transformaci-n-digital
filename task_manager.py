@@ -9,8 +9,20 @@ import os
 import tkinter as tk
 from tkinter import messagebox
 import subprocess
+import requests
 
 TASKS_FILE = "tasks.json"
+
+def get_task_tags_from_ai(task_description):
+    try:
+        response = requests.post(
+            "http://localhost:11434/api/generate",
+            json={"model": "mistral", "prompt": f"Etiqueta esta tarea: {task_description}"},
+            timeout=5
+        )
+        return response.json().get("tags", ["General"])
+    except requests.exceptions.RequestException:
+        return ["Error"]
 
 def load_tasks():
     """

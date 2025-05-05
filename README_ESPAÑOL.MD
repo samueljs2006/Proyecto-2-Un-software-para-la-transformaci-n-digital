@@ -7,7 +7,7 @@ Un gestor de tareas intuitivo con funciones de IA para autoetiquetado y recomend
 
 ---
 
-## 🚀 Motivación
+##  Motivación
 
 
 **¿Por qué este proyecto?**  
@@ -17,7 +17,7 @@ Un gestor de tareas intuitivo con funciones de IA para autoetiquetado y recomend
 - Ideal para usuarios que buscan productividad con herramientas minimalistas. 
 ```
 
-##  🛠️ Requisitos
+##   Requisitos
 
 - **Python 3.7+**  
 - **Tkinter** (incluido en Python estándar)  
@@ -28,7 +28,52 @@ curl -fsSL https://ollama.ai/install.sh | sh
 
 ---
 
-## 📥 Instalación
+## Arquitectura Actual
+![alt text](deepseek_mermaid_20250505_2761ed.png)
+
+- Tecnologías y Protocolos
+|Tecnologías y Protocolos|Tecnología/Estándar|Ejemplo de Uso|
+|------------------------|-------------------|--------------|
+|Ollama AI	|HTTP API (Puerto 11434)	|POST /api/generate con payload JSON|
+|Exportación	|CSV (RFC 4180)	|Compatible con Excel/Google Sheets|
+|Sincronización	|Webhooks	|Notificaciones a Slack/MS Teams|
+
+Ejemplo de Llamada a la API de Ollama
+
+``` bash
+curl -X POST http://localhost:11434/api/generate \
+  -H "Content-Type: application/json" \
+  -d '{"model":"mistral", "prompt":"Clasifica: Preparar informe financiero"}'
+```
+
+Hoja de Ruta de Integraciones
+
+|Trimestre|Función|Estándar Implementado|
+|------------------------|-------------------|--------------|
+|Q3 2024		|Google Tasks API		|OAuth 2.0|
+|Q4 2024		|CalDAV (Calendarios)		|iCalendar RFC 5545|
+|Q1 2025		|Zapier/Integromat		|Webhooks JSON|
+
+Requisitos para Contribuir
+
+   - Para integraciones con IA:
+   ```bash 
+   ollama pull mistral  # Descarga el modelo de lenguaje
+   ```
+
+   - Para desarrollo de APIs:
+   ``` python
+   # Ejemplo: Extender la API
+   @app.route('/api/v1/tasks', methods=['GET'])
+   def get_tasks():
+    return jsonify(load_tasks())
+   ```
+
+
+
+
+
+##  Instalación
 
 
 1. Clona el repositorio:
@@ -43,7 +88,7 @@ curl -fsSL https://ollama.ai/install.sh | sh
 
 ---
 
-## 🖥️ Despliegue
+## Despliegue
 
 ### Windows
 ```bash
@@ -63,7 +108,7 @@ docker run -it --rm task-manager
 
 ---
 
-## 🎯 Ejemplos de Uso
+##  Ejemplos de Uso
 
 ```markdown
 1. **Agregar tarea**:  
@@ -78,12 +123,12 @@ docker run -it --rm task-manager
 4. **Completar/Eliminar**:  
    - Selecciona una tarea y usa los botones correspondientes.  
 ```
-## 📸 Capturas
+##  Capturas
 | Interfaz Principal | Recomendación de IA |
 |--------------------|---------------------|
 | ![Interfaz](Interfaz.png) | ![Recomendación](ia.png) |
 
-##  🤝 Contribuciones
+##   Contribuciones
 
 ```markdown
 1. Haz fork del proyecto.  
