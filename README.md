@@ -10,9 +10,7 @@ An intuitive task manager with AI features for auto-tagging and smart recommenda
 ##  Motivation
 
 
-**Why this project?
-
-**  
+**Why this project?**  
 ```markdown
 - Automates task organization using AI (Ollama) for intelligent tagging.  
 - Simplifies prioritization based on urgency and mood.  
