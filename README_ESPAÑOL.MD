@@ -84,6 +84,7 @@ Requisitos para Contribuir
 2. Instala dependencias:
     ```bash
     pip install tkinter
+    pip install tkinterdnd2
     ```
 
 ---

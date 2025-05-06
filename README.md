@@ -84,6 +84,7 @@ Contributor Requirements
 2. Install dependencies:
     ```bash
     pip install tkinter
+    pip install tkinterdnd2
     ```
 
 ---
