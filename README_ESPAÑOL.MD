@@ -81,12 +81,12 @@ Requisitos para Contribuir
    git clone https://github.com/tu-usuario/gestor-tareas-ia.git
    cd gestor-tareas-ia
    ```
-2. Instala dependencias:
+2. Install dependencies:
     ```bash
-    pip install tkinter
-    pip install tkinterdnd2
+    pip install tkinter requests
     ```
-
+3. Instalar OLLAMA: 
+   Descargar ollama desde su pagina web o en la terminal de windows -->ollama pull mistral
 ---
 
 ## Despliegue

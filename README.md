@@ -81,9 +81,10 @@ Contributor Requirements
    ```
 2. Install dependencies:
     ```bash
-    pip install tkinter
-    pip install tkinterdnd2
+    pip install tkinter requests
     ```
+3. Install OLLAMA: 
+   Download Ollam from its website or in the Windows terminal --> Ollam pull Mistral
 
 ---
 
