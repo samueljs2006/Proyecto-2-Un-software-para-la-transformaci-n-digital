@@ -8,26 +8,55 @@ import json
 import os
 import tkinter as tk
 from tkinter import messagebox
-import subprocess
-import requests 
+import requests
 
 TASKS_FILE = "tasks.json"
 
+def is_ollama_available():
+    """
+    Check if Ollama API is available on localhost.
+    Returns:
+        bool: True if Ollama API responds, False otherwise.
+    """
+    try:
+        response = requests.get("http://localhost:11434")
+        return response.status_code == 200
+    except Exception:
+        return False
+
 def get_task_tags_from_ai(task_description):
+    """
+    Get tags for a task using Ollama.
+    Analyzes the response text and extracts tags based on keywords.
+    """
     try:
         response = requests.post(
             "http://localhost:11434/api/generate",
             json={"model": "mistral", "prompt": f"Etiqueta esta tarea: {task_description}"},
-            timeout=5
+            timeout=10
         )
-        return response.json().get("tags", ["General"])
-    except requests.exceptions.RequestException:
-        return ["Error"]
+        if response.status_code == 200:
+            output = response.json().get("response", "")
+        else:
+            output = ""
+    except Exception:
+        output = ""
+
+    tags = []
+    text = output.lower() + " " + task_description.lower()
+    if "urgente" in text:
+        tags.append("Urgente")
+    if "reunión" in text or "reunion" in text:
+        tags.append("Reunión")
+    if "informe" in text:
+        tags.append("Informe")
+    if not tags:
+        tags.append("General")
+    return tags
 
 def load_tasks():
     """
     Load tasks from the JSON file.
-    
     Returns:
         list: A list of task dictionaries. Returns empty list if file doesn't exist or is invalid.
     """
@@ -42,7 +71,6 @@ def load_tasks():
 def save_tasks(tasks):
     """
     Save tasks to the JSON file.
-    
     Args:
         tasks (list): List of task dictionaries to save.
     """
@@ -52,10 +80,8 @@ def save_tasks(tasks):
 def get_next_id(tasks):
     """
     Generate the next available task ID.
-    
     Args:
         tasks (list): List of existing tasks.
-        
     Returns:
         int: The next available task ID.
     """
@@ -111,19 +137,6 @@ def update_task_list():
         task_listbox.insert(tk.END, f"{task['task']} {status}")
         task_listbox.itemconfig(tk.END, {'bg': color})
 
-def is_ollama_available():
-    """
-    Check if Ollama is available on the system.
-    
-    Returns:
-        bool: True if Ollama is installed and accessible, False otherwise.
-    """
-    try:
-        result = subprocess.run(["ollama", "--version"], capture_output=True, text=True)
-        return result.returncode == 0
-    except FileNotFoundError:
-        return False
-
 def activate_ai():
     """Activate AI to auto-tag all tasks."""
     if not is_ollama_available():
@@ -136,42 +149,10 @@ def activate_ai():
     save_tasks(tasks)
     update_task_list()
 
-def get_task_tags_from_ai(task_description):
-    """
-    Get tags for a task using Ollama AI.
-    
-    Args:
-        task_description (str): The task description to analyze.
-        
-    Returns:
-        list: List of tags for the task.
-    """
-    try:
-        result = subprocess.run(
-            ["ollama", "run", "model_name", "--input", task_description],
-            capture_output=True, text=True
-        )
-        if result.returncode == 0:
-            output = result.stdout.strip()
-            if "urgente" in output.lower():
-                return ["Urgent", "High Priority"]
-            elif "reunión" in output.lower():
-                return ["Meeting", "Work"]
-            else:
-                return ["General"]
-        else:
-            return ["No Tags"]
-    except FileNotFoundError:
-        print("Ollama is not installed or accessible.")
-        return ["Error"]
-    except Exception as e:
-        print(f"Error running Ollama: {e}")
-        return ["Error"]
-
 def recommend_task_based_on_mood():
     """Recommend tasks based on mood and priority tags."""
     tasks = load_tasks()
-    tasks_sorted = sorted(tasks, key=lambda x: "Urgent" in x.get("tags", []), reverse=True)
+    tasks_sorted = sorted(tasks, key=lambda x: "Urgente" in x.get("tags", []), reverse=True)
     recommended_task = tasks_sorted[0] if tasks_sorted else None
     if recommended_task:
         messagebox.showinfo("Recommendation", f"We recommend starting with: {recommended_task['task']}")
@@ -181,7 +162,7 @@ def recommend_task_based_on_mood():
 def main():
     """Initialize and run the main application window."""
     global root, task_entry, task_listbox
-    
+
     root = tk.Tk()
     root.title("Task Manager")
 

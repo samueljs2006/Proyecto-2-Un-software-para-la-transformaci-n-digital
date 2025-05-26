@@ -1,26 +1,43 @@
 [
     {
-        "id": 2,
-        "task": "rgrg",
+        "id": 1,
+        "task": "tarea",
         "completed": false,
         "tags": [
-            "No Tags"
+            "General"
+        ]
+    },
+    {
+        "id": 2,
+        "task": "trabajo",
+        "completed": false,
+        "tags": [
+            "General"
         ]
     },
     {
         "id": 3,
-        "task": "grg",
+        "task": "proyecto general",
         "completed": false,
         "tags": [
-            "No Tags"
+            "General"
         ]
     },
     {
         "id": 4,
-        "task": "f",
-        "completed": true,
+        "task": "comprar pan",
+        "completed": false,
         "tags": [
-            "No Tags"
+            "General"
+        ]
+    },
+    {
+        "id": 5,
+        "task": "Preparar informe urgente",
+        "completed": false,
+        "tags": [
+            "Urgente",
+            "Informe"
         ]
     }
 ]
